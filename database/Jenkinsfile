@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    environment{
+        NAME="Mahmoud Abd Alziem"
+    }
+    stages{
+    
+        stage("Deploy Job database => K8S"){
+            steps{
+                catchError(message : "Failed To Doply To K8s"){
+                    sh '''
+                        kubectl apply -f k8s/job.yaml
+                    '''
+                }
+            }
+        }
+    }
+
+    post{
+        always{
+            echo "Start Stages Pipeline"
+        }
+        success{
+            slackSend color: "#fff", message: "Success Publish database Job"
+        }
+        failure{
+            slackSend color: "#000", message: "Failed Publish database Job"
+        }
+    }
+}

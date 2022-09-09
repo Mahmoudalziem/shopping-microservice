@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users
+  lables:
+    app: users
+  namespace: microservice
+  annotations:
+    author: Mahmoud Abd Alziem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      name: users
+      lables:
+        app: users
+      namespace: microservice
+      annotations:
+        author: Mahmoud Abd Alziem
+    spec:
+      containers:
+        - name: users
+          image: azima/users
+          resources: {}
+          livenessProbe:
+            httpGet:
+              path: /user
+              port: 3003
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /user
+              port: 3003
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: myjob
+                  key: DB_HOST
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: myjob
+                  key: MSSQL_SA_PASSWORD
+          ports:
+            - name: users
+              containerPort: 3003
+              protocol: TCP
+          restartPolicy: Never
