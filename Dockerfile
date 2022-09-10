@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y wget
 COPY package.json /usr/src/app/
     
 # Install all dependencies && Knex
-RUN npm install && npm install knex -g
+RUN npm install
 
 # Copy other files too
 COPY . .
