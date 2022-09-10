@@ -5,6 +5,7 @@ pipeline{
         SCANNER_HOME=tool 'sonarQube'
         ORGANIZATION="microservices"
         PROJECT_NAME="users"
+        DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
     

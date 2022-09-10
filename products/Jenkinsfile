@@ -3,6 +3,7 @@ pipeline{
     environment{
         NAME="Mahmoud Abd Alziem"
         SCANNER_HOME=tool 'sonarQube'
+        DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
     
