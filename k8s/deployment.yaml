@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: users
-  lables:
+  labels:
     app: users
   namespace: microservice
   annotations:
