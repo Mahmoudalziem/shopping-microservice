@@ -43,7 +43,7 @@ pipeline{
             steps{
                 catchError(message : "Failed Push Docker Image") {
                     sh '''
-                        docker push azima/orders:${BUILD_NUMBER}
+                        docker push azima/orders
                         echo done
                     '''
                 }
