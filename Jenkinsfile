@@ -3,6 +3,7 @@ pipeline{
     environment{
         NAME="Mahmoud Abd Alziem"
         SCANNER_HOME=tool 'sonarQube'
+        DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
     
@@ -20,7 +21,7 @@ pipeline{
         stage('build'){
             steps{
                 sh '''
-                    docker build -t azima/products:${BUILD_NUMBER} .
+                    docker build --network host -t azima/products:${BUILD_NUMBER} .
                     echo done
                 '''
                                 
@@ -52,7 +53,7 @@ pipeline{
             steps{
                 catchError(message : "Failed To Doply To K8s"){
                     sh '''
-                        kubectl apply -f k8s/deployment.yaml
+                        ./kubectl apply -f k8s/deployment.yaml
                     '''
                 }
             }
@@ -62,7 +63,7 @@ pipeline{
             steps{
                 catchError(message : "Failed To Publish Sercice products"){
                     sh '''
-                        kubectl apply -f k8s/service.yaml
+                        ./kubectl apply -f k8s/service.yaml
                     '''
                 }
             }
