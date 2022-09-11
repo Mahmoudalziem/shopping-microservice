@@ -60,4 +60,4 @@ spec:
             - name: users
               containerPort: 3003
               protocol: TCP
-          restartPolicy: Never
+
