@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: orders
-          image: azima/orders
+          image: azima/orders:latest
           resources: {}
           livenessProbe:
             httpGet:
