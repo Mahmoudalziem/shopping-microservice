@@ -17,8 +17,7 @@ RUN apt-get update && apt-get install -y wget
 COPY package.json /usr/src/app/
     
 # Install all dependencies && Knex
-RUN  npm install -g yarn \
-    yarn install
+RUN  npm install 
 
 # Copy other files too
 COPY . .
@@ -27,4 +26,4 @@ COPY . .
 EXPOSE 3003
 
 # Command to run app when intantiate an image
-CMD ["yarn","start"]
+CMD ["npm","start"]
