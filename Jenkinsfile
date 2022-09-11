@@ -49,6 +49,15 @@ pipeline{
                 }
             }
         }
+        stage('List pods') {
+            steps{
+                sh '''
+                    curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"
+                    chmod u+x ./kubectl
+                    echo done
+                '''
+            }
+        }
         stage("Deploy Service products => K8S"){
             steps{
                 catchError(message : "Failed To Doply To K8s"){
