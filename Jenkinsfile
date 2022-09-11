@@ -63,7 +63,7 @@ pipeline{
             steps{
                 catchError(message : "Failed To Doply To K8s"){
                     sh '''
-                        kubectl apply -f k8s/deployment.yaml
+                       ./kubectl apply -f k8s/deployment.yaml
                     '''
                 }
             }
@@ -73,7 +73,7 @@ pipeline{
             steps{
                 catchError(message : "Failed To Publish Sercice Users"){
                     sh '''
-                        kubectl apply -f k8s/service.yaml
+                        ./kubectl apply -f k8s/service.yaml
                     '''
                 }
             }
