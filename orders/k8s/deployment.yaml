@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders
-  lables:
+  labels:
     app: orders
   namespace: microservice
   annotations:
@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       name: orders
-      lables:
+      labels:
         app: orders
       namespace: microservice
       annotations:
@@ -60,4 +60,3 @@ spec:
             - name: orders
               containerPort: 3001
               protocol: TCP
-          restartPolicy: Never
