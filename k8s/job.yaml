@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
         - name: database
-          image: node:16
+          image: azima/database
           command: ["npm", "start"]
           resources: {}
           envFrom:
