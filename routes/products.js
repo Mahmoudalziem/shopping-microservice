@@ -9,6 +9,11 @@ const {
     allowSeller
 } = require('../lib/common');
 
+router.get('/', (req, res) => {
+
+    res.send("Success Fire");
+});
+
 router.post('/category', authenticator, allowAdmin, async(req, res) => {
     const response = await prodController.createProductCategory(req.body)
     return res.status(response.status).send(response)

@@ -3,6 +3,8 @@ pipeline{
     environment{
         NAME="Mahmoud Abd Alziem"
         SCANNER_HOME=tool 'sonarQube'
+        ORGANIZATION="microservices"
+        PROJECT_NAME="products"
         DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
@@ -23,8 +25,7 @@ pipeline{
                 sh '''
                     docker build --network host -t azima/products .
                     echo done
-                '''
-                                
+                '''                   
             }
         }
         stage('Docker Login'){
@@ -54,27 +55,9 @@ pipeline{
                 sh '''
                     curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"
                     chmod u+x ./kubectl
+                    ./kubectl apply -f k8s/
                     echo done
                 '''
-            }
-        }
-        stage("Deploy Service products => K8S"){
-            steps{
-                catchError(message : "Failed To Doply To K8s"){
-                    sh '''
-                        ./kubectl apply -f k8s/deployment.yaml
-                    '''
-                }
-            }
-        }
-
-        stage("Publish Service products => K8S"){
-            steps{
-                catchError(message : "Failed To Publish Sercice products"){
-                    sh '''
-                        ./kubectl apply -f k8s/service.yaml
-                    '''
-                }
             }
         }
     }
