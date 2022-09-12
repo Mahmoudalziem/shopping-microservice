@@ -6,7 +6,7 @@ pipeline{
         ORGANIZATION="microservices"
         PROJECT_NAME="users"
         DOCKERIZE_VERSION="v0.6.1"
-        DB_HOST="shopping.cy2ccq4ewkl3.us-east-2.rds.amazonaws.com"
+        DB_HOST=shopping.cy2ccq4ewkl3.us-east-2.rds.amazonaws.com
         DB_USER="admin"
         DB_NAME="shopping"
         REDIS_PORT="6379"
