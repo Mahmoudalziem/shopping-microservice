@@ -2,23 +2,9 @@ pipeline{
     agent any
     environment{
         NAME="Mahmoud Abd Alziem"
-        SCANNER_HOME=tool 'sonarQube'
-        ORGANIZATION="microservices"
-        PROJECT_NAME="database"
         DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
-    
-        stage('SonarQube Analysis') {
-            steps{
-                withSonarQubeEnv(installationName: 'sonarQube',credentialsId: 'sonarQube') {
-                    sh ''' 
-                          $SCANNER_HOME/bin/sonar-scanner
-                          echo Done
-                    '''
-                }
-            }
-        }
         
         stage('build'){
             steps{
