@@ -10,5 +10,5 @@ spec:
   ports:
     - name: products
       protocol: TCP
-      port: 3003
-      targetPort: 3003
+      port: 3002
+      targetPort: products
