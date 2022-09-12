@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: users
-          image: azima/users:default
+          image: azima/users
           resources: {}
           livenessProbe:
             httpGet:
