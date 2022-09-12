@@ -21,7 +21,7 @@ pipeline{
         stage('build'){
             steps{
                 sh '''
-                    docker build --network host -t azima/orders:${BUILD_NUMBER} .
+                    docker build --network host -t azima/orders .
                     echo done
                 '''
                                 
@@ -43,7 +43,7 @@ pipeline{
             steps{
                 catchError(message : "Failed Push Docker Image") {
                     sh '''
-                        docker push azima/orders:default
+                        docker push azima/orders
                         echo done
                     '''
                 }

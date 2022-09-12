@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: orders
-          image: azima/orders:latest
+          image: azima/orders
           resources: {}
           livenessProbe:
             httpGet:
@@ -47,15 +47,9 @@ spec:
             - name: ACCEPT_EULA
               value: "Y"
             - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: myjob
-                  key: DB_HOST
+              value: ""
             - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: myjob
-                  key: MSSQL_SA_PASSWORD
+              value: ""
           ports:
             - name: orders
               containerPort: 3001
