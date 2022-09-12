@@ -1,9 +1,10 @@
+console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME)
 const development = {
     client: 'mysql2',
     connection: {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
-        password: process.env.DB_PASS,
+        password: "azima1234" || process.env.DB_PASS,
         database: process.env.DB_NAME
     },
     pool: {

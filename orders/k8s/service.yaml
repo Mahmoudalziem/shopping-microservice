@@ -10,5 +10,5 @@ spec:
   ports:
     - name: orders
       protocol: TCP
-      port: 3003
-      targetPort: 3003
+      port: 3001
+      targetPort: orders
