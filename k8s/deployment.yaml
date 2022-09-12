@@ -43,15 +43,12 @@ spec:
             successThreshold: 1
             failureThreshold: 3
             periodSeconds: 10
-          env:
-            - name: ACCEPT_EULA
-              value: "Y"
-            - name: DB_HOST
-              value: ""
-            - name: DB_HOST
-              value: ""
+          envFrom:
+            - configMapRef:
+                name: config-data
+            - secretRef:
+                name: password-secret
           ports:
             - name: users
               containerPort: 3003
               protocol: TCP
-

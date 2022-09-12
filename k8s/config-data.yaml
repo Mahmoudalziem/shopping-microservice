@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-data
+  namespace: microservice
+data:
+  DB_HOST: ${DB_HOST}
+  DB_USER: ${DB_USER}
+  DB_NAME: ${DB_NAME}
+  REDIS_PORT: ${REDIS_PORT}
+  REDIS_HOST: ${REDIS_HOST}
+  KAFKA_ID: ${KAFKA_ID}
+  KAFKA_BROKERS: ${KAFKA_BROKERS}
+  KAFKA_SSL_STATUS: ${KAFKA_SSL_STATUS}
+  TOKEN_KEY: ${TOKEN_KEY}

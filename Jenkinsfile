@@ -6,7 +6,15 @@ pipeline{
         ORGANIZATION="microservices"
         PROJECT_NAME="users"
         DOCKERIZE_VERSION="v0.6.1"
-        HOME = '.'
+        DB_HOST="shopping.cy2ccq4ewkl3.us-east-2.rds.amazonaws.com"
+        DB_USER="admin"
+        DB_NAME="shopping"
+        REDIS_PORT="6379"
+        REDIS_HOST="shopping.5vg0uf.ng.0001.use2.cache.amazonaws.com"
+        KAFKA_ID="test"
+        KAFKA_BROKERS="b-1.shopping.5mbhz8.c6.kafka.us-east-2.amazonaws.com:9094,b-2.shopping.5mbhz8.c6.kafka.us-east-2.amazonaws.com:9094"
+        KAFKA_SSL_STATUS="1"
+        TOKEN_KEY="azima"
     }
     stages{
     
