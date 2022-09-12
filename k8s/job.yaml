@@ -1,22 +1,37 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: database
+  labels:
+    app: database
   namespace: microservice
   annotations:
-    author: "Mahmoud Abd Alziem"
+    author: Mahmoud Abd Alziem
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
   template:
+    metadata:
+      name: database
+      labels:
+        app: database
+      namespace: microservice
+      annotations:
+        author: Mahmoud Abd Alziem
     spec:
       containers:
         - name: database
           image: azima/database
-          command: ["npm", "start"]
+          command: ["npm","start"]
           resources: {}
           envFrom:
             - configMapRef:
                 name: config-data
             - secretRef:
                 name: password-secret
-      restartPolicy: Never
-  backoffLimit: 4
+          ports:
+            - name: database
+              containerPort: 3005
+              protocol: TCP
