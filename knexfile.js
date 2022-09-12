@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const development = {
     client: 'mysql2',
     connection: {
