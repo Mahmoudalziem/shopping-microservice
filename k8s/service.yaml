@@ -12,7 +12,3 @@ spec:
       protocol: TCP
       port: 3003
       targetPort: users
-    - name: agents
-      protocol: TCP
-      port: 3306
-      targetPort: rds
