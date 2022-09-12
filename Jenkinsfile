@@ -24,7 +24,7 @@ pipeline{
         stage('build'){
             steps{
                 sh '''
-                    docker build --network host -t azima/users .
+                    docker build --network host -t azima/users:default .
                     echo done
                 '''                   
             }
