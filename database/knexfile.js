@@ -5,7 +5,7 @@ const development = {
     connection: {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
-        password: process.env.DB_PASS || "azima1234",
+        password: "azima1234" || process.env.DB_PASS,
         database: process.env.DB_NAME
     },
     pool: {
