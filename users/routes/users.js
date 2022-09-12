@@ -11,6 +11,11 @@ const {
 } = require('../lib/common');
 const cache = require('../lib/cache')
 
+router.get('/', (req, res) => {
+
+    res.send("Success Fire");
+});
+
 // CRUD user
 router.post('/register', async(req, res) => {
 

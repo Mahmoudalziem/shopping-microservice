@@ -10,6 +10,11 @@ const {
     allowSeller
 } = require('../lib/common');
 
+router.get('/', (req, res) => {
+
+    res.send("Success Fire");
+});
+
 // orders
 router.post('/create', authenticator, allowCustomer, async(req, res, next) => {
 

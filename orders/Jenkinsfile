@@ -3,6 +3,8 @@ pipeline{
     environment{
         NAME="Mahmoud Abd Alziem"
         SCANNER_HOME=tool 'sonarQube'
+        ORGANIZATION="microservices"
+        PROJECT_NAME="orders"
         DOCKERIZE_VERSION="v0.6.1"
     }
     stages{
@@ -21,10 +23,9 @@ pipeline{
         stage('build'){
             steps{
                 sh '''
-                    docker build --network host -t azima/orders:${BUILD_NUMBER} .
+                    docker build --network host -t azima/orders .
                     echo done
-                '''
-                                
+                '''                   
             }
         }
         stage('Docker Login'){
@@ -43,7 +44,7 @@ pipeline{
             steps{
                 catchError(message : "Failed Push Docker Image") {
                     sh '''
-                        docker push azima/orders:${BUILD_NUMBER}
+                        docker push azima/orders
                         echo done
                     '''
                 }
@@ -54,27 +55,9 @@ pipeline{
                 sh '''
                     curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"
                     chmod u+x ./kubectl
+                    ./kubectl apply -f k8s/
                     echo done
                 '''
-            }
-        }
-        stage("Deploy Service orders => K8S"){
-            steps{
-                catchError(message : "Failed To Doply To K8s"){
-                    sh '''
-                        ./kubectl apply -f k8s/deployment.yaml
-                    '''
-                }
-            }
-        }
-
-        stage("Publish Service orders => K8S"){
-            steps{
-                catchError(message : "Failed To Publish Sercice orders"){
-                    sh '''
-                        ./kubectl apply -f k8s/service.yaml
-                    '''
-                }
             }
         }
     }

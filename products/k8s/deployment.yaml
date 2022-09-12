@@ -43,19 +43,11 @@ spec:
             successThreshold: 1
             failureThreshold: 3
             periodSeconds: 10
-          env:
-            - name: ACCEPT_EULA
-              value: "Y"
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: myjob
-                  key: DB_HOST
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: myjob
-                  key: MSSQL_SA_PASSWORD
+          envFrom:
+            - configMapRef:
+                name: config-data
+            - secretRef:
+                name: password-secret
           ports:
             - name: products
               containerPort: 3002
