@@ -52,3 +52,6 @@ spec:
             - name: users
               containerPort: 3003
               protocol: TCP
+            - name: rds
+              containerPort: 3306
+              protocol: TCP
