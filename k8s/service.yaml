@@ -11,4 +11,4 @@ spec:
     - name: database
       protocol: TCP
       port: 3005
-      targetPort: 3005
+      targetPort: database
